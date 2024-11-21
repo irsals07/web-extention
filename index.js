@@ -1,18 +1,25 @@
-let myLeads = []
-const inputEl = document.getElementById("input-el")
-const inputBtn = document.getElementById("input-btn")
-const ulEl = document.getElementById("ul-el")
+let myLeads = ["www.google.com", "www.example.com", "www.facebook.com"];
+const inputEl = document.getElementById("input-el");
+const inputBtn = document.getElementById("input-btn");
+const ulEl = document.getElementById("ul-el");
+const container = document.getElementById("container");
 
-inputBtn.addEventListener("click", function() {
-    let inputValue = inputEl.value
-    myLeads.push(inputValue)
-    inputEl.value = ""
+container.innerHTML = "<button onclick='buy()'>Buy</button>";
 
-    // Clear previous list items to avoid duplication
-    ulEl.innerHTML = ""
+function buy() {
+    container.innerHTML += "<p>Thank you for buying!</p>";
+}
 
-    // Render the updated list
-    for (let i = 0; i < myLeads.length; i++) {
-        ulEl.innerHTML += `<li>${myLeads[i]}</li>`
+inputBtn.addEventListener("click", function () {
+    let inputValue = inputEl.value; // Get the value from the input field
+    if (inputValue) { 
+        myLeads.push(inputValue); 
+        inputEl.value = ""; 
+        ulEl.innerHTML = "";
+
+        // Render the updated list of leads
+        for (let i = 0; i < myLeads.length; i++) {
+            ulEl.innerHTML += `<li>${myLeads[i]}</li>`;
+        }
     }
-})
+});
