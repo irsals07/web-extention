@@ -4,11 +4,7 @@ const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");
 const container = document.getElementById("container");
 
-container.innerHTML = "<button onclick='buy()'>Buy</button>";
 
-function buy() {
-    container.innerHTML += "<p>Thank you for buying!</p>";
-}
 
 inputBtn.addEventListener("click", function () {
     let inputValue = inputEl.value; // Get the value from the input field
@@ -17,9 +13,22 @@ inputBtn.addEventListener("click", function () {
         inputEl.value = ""; 
         ulEl.innerHTML = "";
 
-        // Render the updated list of leads
-        for (let i = 0; i < myLeads.length; i++) {
-            ulEl.innerHTML += `<li>${myLeads[i]}</li>`;
+        // // Render the updated list of leads
+        // for (let i = 0; i < myLeads.length; i++) {
+        //     ulEl.innerHTML += "<li>" + "www." +myLeads[i] +".com"+ "</li>";
+        // }
+        function renderLeads(){
+            let listItems = ""
+            for(let i = 0; i<myLeads.length; i++){
+                listItems += `<li><a target=_blank href= ${myLeads[i]} >
+                ${myLeads[i]}
+                </a></li>`
+            }
+            ulEl.innerHTML = listItems
         }
+
+
+        renderLeads()
     }
+
 });
