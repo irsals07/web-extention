@@ -6,6 +6,7 @@ const container = document.getElementById("container");
 
 
 
+
 inputBtn.addEventListener("click", function () {
     let inputValue = inputEl.value; // Get the value from the input field
     if (inputValue) { 
