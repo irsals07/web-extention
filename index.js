@@ -38,13 +38,14 @@ inputBtn.addEventListener("click", function () {
 
 // Save the current tab
 saveTabBtn.addEventListener("click", function () {
-    // Use the browser's API to get the current tab's URL 
-    const currentTab = "https://www.google.com"; //replace with true logic
-    myLeads.push(currentTab);
-    localStorage.setItem("myLeads", JSON.stringify(myLeads)); // Save to localStorage
-    renderLeads(); 
+    // Use the Chrome API to get the current tab's URL
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        const currentTab = tabs[0].url; // Get the URL of the active tab
+        myLeads.push(currentTab);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads)); // Save to localStorage
+        renderLeads(); 
+    });
 });
-
 // Delete all saved leads
 deleteAllBtn.addEventListener("click", function () {
     myLeads = []; 
